@@ -9,51 +9,6 @@ from openpyxl import load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
 from openpyxl.styles import Alignment, Border, Side  # 必要なモジュールをインポート
 
-# Inicializar estados de la sesión para manejar autenticación y conteo de intentos
-if "authenticated" not in st.session_state:
-    st.session_state.authenticated = False
-
-if "login_attempts" not in st.session_state:
-    st.session_state.login_attempts = 3
-
-# Función para verificar la contraseña con límite de intentos
-def verificar_contraseña():
-    contraseña_correcta = "jicajica"  
-    contraseña_ingresada = st.text_input("Introduce la contraseña:", type="password")
-    
-    if st.button("Iniciar sesión"):
-        if st.session_state.login_attempts >= 3:
-            st.error("Has superado el número máximo de intentos. Acceso bloqueado.")
-        elif contraseña_ingresada == contraseña_correcta:
-            st.session_state.authenticated = True
-            st.success("¡Autenticación exitosa!")
-        else:
-            st.session_state.login_attempts += 1
-            intentos_restantes = 3 - st.session_state.login_attempts
-            st.error(f"Contraseña incorrecta. Te quedan {intentos_restantes} intento(s).")
-        
-        # Bloqueo después de 3 intentos fallidos
-        if st.session_state.login_attempts >= 3:
-            st.error("Acceso bloqueado. Intenta más tarde.")
-
-# Función para la aplicación principal
-def app_principal():
-    st.title("¡Bienvenido a la aplicación secreta!")
-    st.write("Este es el contenido de la aplicación.")
-    st.button("Cerrar sesión", on_click=lambda: cerrar_sesion())
-
-# Función para cerrar sesión
-def cerrar_sesion():
-    st.session_state.authenticated = False
-    st.session_state.login_attempts = 0  # Restablecer intentos al cerrar sesión
-
-# Lógica para mostrar la interfaz en función del estado de autenticación
-if st.session_state.authenticated:
-    app_principal()
-else:
-    st.title("Pantalla de inicio de sesión")
-    verificar_contraseña()
-
 st.write("## :blue[Plan de negocio en operación]") 
 st.write("###### Esta herramienta facilita la planificación del monto a vender y el flujo de caja. :green[(GuateCrece)]") 
 
