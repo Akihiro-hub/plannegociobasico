@@ -14,7 +14,7 @@ if "authenticated" not in st.session_state:
     st.session_state.authenticated = False
 
 if "login_attempts" not in st.session_state:
-    st.session_state.login_attempts = 0
+    st.session_state.login_attempts = 3
 
 # Función para verificar la contraseña con límite de intentos
 def verificar_contraseña():
