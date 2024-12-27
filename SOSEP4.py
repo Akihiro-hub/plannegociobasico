@@ -37,8 +37,9 @@ def verificar_contraseña():
             st.error("Acceso bloqueado. Intenta más tarde.")
 
 if st.session_state.authenticated:
+    # 認証成功後に表示されるメインコンテンツ
     st.write("## :blue[Plan de negocio en operación]") 
-    st.write("###### Esta herramienta facilita la planificación del monto a vender y el flujo de caja. :green[(GuateCrece)]") 
+    st.write("###### Esta herramienta facilita la planificación del monto a vender y el flujo de caja. :green[(GuateCrece)]")  
     
     def calculate_cash_flow(initial_cash, sales, material_cost, labor_cost, loan_repayment, other_fixed_costs, desired_profit):
         fixed_cost = labor_cost + loan_repayment + other_fixed_costs
