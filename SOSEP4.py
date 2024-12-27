@@ -20,9 +20,9 @@ if "login_attempts" not in st.session_state:
     st.session_state.login_attempts = 0
 
 def verificar_contraseña():
-    contraseña_ingresada = st.text_input("Introduce la contraseña:", type="password")
+    contraseña_ingresada = st.text_input("Introduce la contraseña:", type="password", key="password")
 
-    if st.button("Iniciar sesión"):
+    if contraseña_ingresada:
         if st.session_state.login_attempts >= 3:
             st.error("Has superado el número máximo de intentos. Acceso bloqueado.")
         elif contraseña_ingresada == PASSWORD:  # Secretsから取得したパスワードで認証
