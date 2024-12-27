@@ -37,8 +37,6 @@ def verificar_contraseña():
             st.error("Acceso bloqueado. Intenta más tarde.")
 
 if st.session_state.authenticated:
-    st.write("¡Bienvenido a la aplicación!")
-
     st.write("## :blue[Plan de negocio en operación]") 
     st.write("###### Esta herramienta facilita la planificación del monto a vender y el flujo de caja. :green[(GuateCrece)]") 
     
