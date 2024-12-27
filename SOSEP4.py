@@ -27,7 +27,7 @@ def verificar_contraseña():
             st.error("Has superado el número máximo de intentos. Acceso bloqueado.")
         elif contraseña_ingresada == PASSWORD:  # Secretsから取得したパスワードで認証
             st.session_state.authenticated = True
-            st.success("¡Autenticación exitosa!")
+            st.success("¡Autenticación exitosa! Marque otra vez el botón 'Iniciar sesión'.")
         else:
             st.session_state.login_attempts += 1
             intentos_restantes = 3 - st.session_state.login_attempts
